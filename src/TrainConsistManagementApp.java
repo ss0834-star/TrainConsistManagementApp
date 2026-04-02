@@ -201,5 +201,39 @@ public class TrainConsistManagementApp {
         } else {
             System.out.println("Train is NOT Safety Compliant");
         }
+
+        System.out.println("\n=== UC13: Performance Comparison ===");
+
+        List<Bogie> largeList = new ArrayList<>();
+        for (int i = 0; i < 100000; i++) {
+            largeList.add(new Bogie("Sleeper", i % 100));
+        }
+
+        long startLoop = System.nanoTime();
+
+        List<Bogie> loopResult = new ArrayList<>();
+        for (Bogie b : largeList) {
+            if (b.capacity > 60) {
+                loopResult.add(b);
+            }
+        }
+
+        long endLoop = System.nanoTime();
+
+        long startStream = System.nanoTime();
+
+        List<Bogie> streamResult = largeList.stream()
+                .filter(b -> b.capacity > 60)
+                .collect(Collectors.toList());
+
+        long endStream = System.nanoTime();
+
+        long loopTime = endLoop - startLoop;
+        long streamTime = endStream - startStream;
+
+        System.out.println("Loop Time: " + loopTime + " ns");
+        System.out.println("Stream Time: " + streamTime + " ns");
+        System.out.println("Loop Result Size: " + loopResult.size());
+        System.out.println("Stream Result Size: " + streamResult.size());
     }
 }
