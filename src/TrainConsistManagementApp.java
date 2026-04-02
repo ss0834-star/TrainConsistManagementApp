@@ -42,7 +42,10 @@ class GoodsBogie {
 }
 
 public class TrainConsistManagementApp {
+
     public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
 
         System.out.println("=== Train Consist Management App ===");
 
@@ -54,7 +57,6 @@ public class TrainConsistManagementApp {
         passengerBogies.add("Sleeper");
         passengerBogies.add("AC Chair");
         passengerBogies.add("First Class");
-
         System.out.println("Passenger Bogies: " + passengerBogies);
 
         passengerBogies.remove("AC Chair");
@@ -67,7 +69,6 @@ public class TrainConsistManagementApp {
         bogieIds.add("BG102");
         bogieIds.add("BG101");
         bogieIds.add("BG103");
-
         System.out.println("Unique Bogie IDs: " + bogieIds);
 
         LinkedList<String> trainConsist = new LinkedList<>();
@@ -76,11 +77,9 @@ public class TrainConsistManagementApp {
         trainConsist.add("AC");
         trainConsist.add("Cargo");
         trainConsist.add("Guard");
-
         trainConsist.add(2, "Pantry Car");
         trainConsist.removeFirst();
         trainConsist.removeLast();
-
         System.out.println("Final Train Consist: " + trainConsist);
 
         LinkedHashSet<String> formation = new LinkedHashSet<>();
@@ -89,20 +88,17 @@ public class TrainConsistManagementApp {
         formation.add("Cargo");
         formation.add("Guard");
         formation.add("Sleeper");
-
         System.out.println("Ordered Unique Formation: " + formation);
 
         HashMap<String, Integer> bogieCapacity = new HashMap<>();
         bogieCapacity.put("Sleeper", 72);
         bogieCapacity.put("AC Chair", 60);
         bogieCapacity.put("First Class", 24);
-
         for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
             System.out.println(entry.getKey() + " Capacity: " + entry.getValue());
         }
 
         List<Bogie> bogieList = new ArrayList<>();
-
         try {
             bogieList.add(new Bogie("Sleeper", 72));
             bogieList.add(new Bogie("AC Chair", 60));
@@ -113,90 +109,73 @@ public class TrainConsistManagementApp {
         }
 
         bogieList.sort(Comparator.comparingInt(b -> b.capacity));
-
         System.out.println("Bogies sorted by capacity:");
         bogieList.forEach(System.out::println);
 
         List<Bogie> filteredBogies = bogieList.stream()
                 .filter(b -> b.capacity > 60)
                 .collect(Collectors.toList());
-
         System.out.println("Filtered Bogies (capacity > 60):");
         filteredBogies.forEach(System.out::println);
 
         Map<String, List<Bogie>> groupedBogies = bogieList.stream()
                 .collect(Collectors.groupingBy(b -> b.name));
-
         System.out.println("Grouped Bogies:");
         groupedBogies.forEach((k, v) -> System.out.println(k + " -> " + v));
 
         int totalCapacity = bogieList.stream()
                 .map(b -> b.capacity)
                 .reduce(0, Integer::sum);
-
         System.out.println("Total Seating Capacity: " + totalCapacity);
 
-        Scanner sc = new Scanner(System.in);
-
         System.out.println("\n=== UC11: Regex Validation ===");
+        System.out.print("Enter Train ID: ");
         String trainId = sc.nextLine();
+        System.out.print("Enter Cargo Code: ");
         String cargoCode = sc.nextLine();
-
         Pattern trainPattern = Pattern.compile("TRN-\\d{4}");
         Pattern cargoPattern = Pattern.compile("PET-[A-Z]{2}");
-
         System.out.println(trainPattern.matcher(trainId).matches() ? "Valid Train ID" : "Invalid Train ID");
         System.out.println(cargoPattern.matcher(cargoCode).matches() ? "Valid Cargo Code" : "Invalid Cargo Code");
 
         System.out.println("\n=== UC12: Safety Check ===");
-
         List<GoodsBogie> goodsList = Arrays.asList(
                 new GoodsBogie("Cylindrical", "Petroleum"),
                 new GoodsBogie("Rectangular", "Coal")
         );
-
         boolean safe = goodsList.stream()
                 .allMatch(g -> !g.type.equals("Cylindrical") || g.cargo.equals("Petroleum"));
-
         System.out.println(safe ? "Train is Safety Compliant" : "Train is Unsafe");
 
         System.out.println("\n=== UC13: Performance Comparison ===");
-
         List<Bogie> bigList = new ArrayList<>();
         try {
             for (int i = 0; i < 50000; i++) {
                 bigList.add(new Bogie("Sleeper", i % 100 + 1));
             }
         } catch (InvalidCapacityException e) {}
-
         long start1 = System.nanoTime();
         List<Bogie> loopResult = new ArrayList<>();
         for (Bogie b : bigList) {
             if (b.capacity > 60) loopResult.add(b);
         }
         long end1 = System.nanoTime();
-
         long start2 = System.nanoTime();
         List<Bogie> streamResult = bigList.stream()
                 .filter(b -> b.capacity > 60)
                 .collect(Collectors.toList());
         long end2 = System.nanoTime();
-
         System.out.println("Loop Time: " + (end1 - start1));
         System.out.println("Stream Time: " + (end2 - start2));
 
         System.out.println("\n=== UC15: Safe Cargo Assignment ===");
-
         try {
             String type = "Rectangular";
             String cargo = "Petroleum";
-
             if (type.equals("Rectangular") && cargo.equals("Petroleum")) {
                 throw new CargoSafetyException("Unsafe cargo assignment!");
             }
-
             System.out.println("Cargo Assigned Successfully");
-
         } catch (CargoSafetyException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -204,9 +183,7 @@ public class TrainConsistManagementApp {
         }
 
         System.out.println("\n=== UC16: Bubble Sort ===");
-
         int[] capacities = {72, 56, 24, 70, 60};
-
         for (int i = 0; i < capacities.length - 1; i++) {
             for (int j = 0; j < capacities.length - i - 1; j++) {
                 if (capacities[j] > capacities[j + 1]) {
@@ -216,20 +193,17 @@ public class TrainConsistManagementApp {
                 }
             }
         }
-
         System.out.println(Arrays.toString(capacities));
 
         System.out.println("\n=== UC17: Arrays.sort() ===");
-
         String[] names = {"Sleeper","AC Chair","First Class","General","Luxury"};
         Arrays.sort(names);
         System.out.println(Arrays.toString(names));
 
         System.out.println("\n=== UC18: Linear Search ===");
-
         String[] ids = {"BG101","BG205","BG309","BG412","BG550"};
+        System.out.print("Enter ID for Linear Search: ");
         String key = sc.nextLine();
-
         boolean found = false;
         for (String id : ids) {
             if (id.equals(key)) {
@@ -240,19 +214,14 @@ public class TrainConsistManagementApp {
         System.out.println(found ? "Found" : "Not Found");
 
         System.out.println("\n=== UC19: Binary Search ===");
-
-        Arrays.sort(ids); // IMPORTANT
-
-        int low = 0, high = ids.length - 1;
-        boolean binaryFound = false;
-
+        Arrays.sort(ids);
         System.out.print("Enter ID for Binary Search: ");
         String searchKey = sc.nextLine();
-
+        int low = 0, high = ids.length - 1;
+        boolean binaryFound = false;
         while (low <= high) {
             int mid = (low + high) / 2;
             int cmp = ids[mid].compareTo(searchKey);
-
             if (cmp == 0) {
                 binaryFound = true;
                 break;
@@ -262,7 +231,21 @@ public class TrainConsistManagementApp {
                 high = mid - 1;
             }
         }
-
         System.out.println(binaryFound ? "Bogie Found (Binary Search)" : "Bogie Not Found");
+
+        System.out.println("\n=== UC20: Prevent Search on Empty Train ===");
+        System.out.print("Enter Bogie ID to search: ");
+        String searchBogieId = sc.nextLine();
+        try {
+            if (trainConsist.isEmpty()) {
+                throw new IllegalStateException("Cannot search: No bogies available in the train!");
+            }
+            boolean foundBogie = trainConsist.contains(searchBogieId);
+            System.out.println(foundBogie ? "Bogie Found" : "Bogie Not Found");
+        } catch (IllegalStateException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        sc.close();
     }
 }
