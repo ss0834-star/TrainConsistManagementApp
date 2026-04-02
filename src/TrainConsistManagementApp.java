@@ -224,5 +224,14 @@ public class TrainConsistManagementApp {
         for (int c : capacities) {
             System.out.print(c + " ");
         }
+
+        System.out.println("\n\n=== UC17: Arrays.sort() ===");
+
+        String[] bogieNames = {"Sleeper", "AC Chair", "First Class", "General", "Luxury"};
+
+        Arrays.sort(bogieNames);
+
+        System.out.println("Sorted Bogie Names:");
+        System.out.println(Arrays.toString(bogieNames));
     }
 }
