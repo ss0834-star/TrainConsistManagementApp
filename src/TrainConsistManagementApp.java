@@ -12,11 +12,20 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
+class InvalidCapacityException extends Exception {
+    public InvalidCapacityException(String message) {
+        super(message);
+    }
+}
+
 class Bogie {
     String name;
     int capacity;
 
-    Bogie(String name, int capacity) {
+    Bogie(String name, int capacity) throws InvalidCapacityException {
+        if (capacity <= 0) {
+            throw new InvalidCapacityException("Capacity must be greater than zero");
+        }
         this.name = name;
         this.capacity = capacity;
     }
@@ -96,10 +105,14 @@ public class TrainConsistManagementApp {
 
         List<Bogie> bogieList = new ArrayList<>();
 
-        bogieList.add(new Bogie("Sleeper", 72));
-        bogieList.add(new Bogie("AC Chair", 60));
-        bogieList.add(new Bogie("First Class", 24));
-        bogieList.add(new Bogie("Sleeper", 72));
+        try {
+            bogieList.add(new Bogie("Sleeper", 72));
+            bogieList.add(new Bogie("AC Chair", 60));
+            bogieList.add(new Bogie("First Class", 24));
+            bogieList.add(new Bogie("Sleeper", 72));
+        } catch (InvalidCapacityException e) {
+            System.out.println(e.getMessage());
+        }
 
         bogieList.sort(Comparator.comparingInt(b -> b.capacity));
 
@@ -205,8 +218,12 @@ public class TrainConsistManagementApp {
         System.out.println("\n=== UC13: Performance Comparison ===");
 
         List<Bogie> largeList = new ArrayList<>();
-        for (int i = 0; i < 100000; i++) {
-            largeList.add(new Bogie("Sleeper", i % 100));
+        try {
+            for (int i = 0; i < 100000; i++) {
+                largeList.add(new Bogie("Sleeper", (i % 100) + 1));
+            }
+        } catch (InvalidCapacityException e) {
+            System.out.println(e.getMessage());
         }
 
         long startLoop = System.nanoTime();
@@ -233,7 +250,19 @@ public class TrainConsistManagementApp {
 
         System.out.println("Loop Time: " + loopTime + " ns");
         System.out.println("Stream Time: " + streamTime + " ns");
-        System.out.println("Loop Result Size: " + loopResult.size());
-        System.out.println("Stream Result Size: " + streamResult.size());
+
+        System.out.println("\n=== UC14: Custom Exception Check ===");
+
+        try {
+            Bogie validBogie = new Bogie("Sleeper", 72);
+            System.out.println("Created: " + validBogie);
+
+            Bogie invalidBogie = new Bogie("AC Chair", 0);
+            System.out.println("Created: " + invalidBogie);
+        } catch (InvalidCapacityException e) {
+            System.out.println(e.getMessage());
+        }
+
+        scanner.close();
     }
 }
