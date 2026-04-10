@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e594cda5-c119-4436-a792-cfef36444d53" name="Changes" comment="" />
+    <list default="true" id="66415bc4-f83c-4ac3-821e-41f845d535cb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Train Consist Management App.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Train Consist Management App.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +30,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/ss0834-star/TrainConsistManagementApp&quot;,
+    &quot;url&quot;: &quot;https://github.com/ss0834-star/TrainConsistManagementApp.git&quot;,
     &quot;accountId&quot;: &quot;07320a03-9a43-4b8c-8ebe-1e1d74ac915e&quot;
   }
 }</component>
@@ -36,16 +48,46 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.TrainConsistManagementApp.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.TrainConsistManagementAppTest,testBinarySearchFound and 1 more.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "develop",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "feature/UC20",
     "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\TrainConsistManagementApp_clone\test" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="TrainConsistManagementAppTest,testBinarySearchFound and 1 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TrainConsistManagementApp" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="TrainConsistManagementAppTest,testBinarySearchFound" />
+        <pattern testClass="TrainConsistManagementAppTest,testUC20EmptyTrainCheck" />
+      </patterns>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TrainConsistManagementAppTest,testBinarySearchFound and 1 more" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -55,7 +97,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5247101f-294d-45f0-9fbf-8b7d8d6b1827" name="Changes" comment="" />
+      <changelist id="66415bc4-f83c-4ac3-821e-41f845d535cb" name="Changes" comment="" />
       <created>1775098991593</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
